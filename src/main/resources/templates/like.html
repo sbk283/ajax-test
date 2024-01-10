@@ -1,0 +1,44 @@
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
+<div class="card my-3">
+    <div class="card-body">
+        <div class="my-3">
+            <a href="#" class="recommend btn btn-sm btn-outline-secondary">
+                추천
+                <span class="badge rounded-pill bg-success">1</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        // 추천 버튼에 클릭 이벤트를 연결
+        $('.recommend').on('click', function (e) {
+
+            // 배지 내의 현재 숫자 가져오기
+            var currentCount = parseInt($(this).find('.badge').text());
+
+            // 숫자 증가
+            var newCount = currentCount + 1;
+
+            // 새로운 숫자로 배지 업데이트
+            $(this).find('.badge').text(newCount);
+
+            // 여기서 AJAX 요청 수행
+            $.ajax({
+                type: "GET",
+                url: 'your_backend_endpoint',
+                data: {},
+                success: function (data) {
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        });
+    });
+
+</script>
